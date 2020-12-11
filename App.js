@@ -1,21 +1,39 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState, useEffect} from 'react'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+import Photo from './src/components/Photo'
+
+const App = () => {
+
+  const [items, setItems] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+    const [query, setQuery] = useState('')
+    const [index,setIndex] = useState({})
+  
+    useEffect(() => {
+      const load = async () => {
+        setIsLoading(true)
+        const response = await fetch(
+          `https://www.breakingbadapi.com/api/characters?name=${query}`
+        )
+  
+        // console.log(result.data)
+            const data = await response.json()
+        setItems(data)
+        setIsLoading(false)
+        console.log(data);
+      }
+  
+      load()
+    }, [query])
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView>
       <StatusBar style="auto" />
-    </View>
+      <Photo text="hello" items={items} />
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App
+
