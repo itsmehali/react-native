@@ -1,15 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import Navigator from './src/routes/nameStack'
 
-import Photo from './src/components/Photo'
+import Name from './src/components/Name'
 
 const App = () => {
 
-  const [items, setItems] = useState([])
+    const [items, setItems] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [query, setQuery] = useState('')
-    const [index,setIndex] = useState({})
   
     useEffect(() => {
       const load = async () => {
@@ -19,7 +19,7 @@ const App = () => {
         )
   
         // console.log(result.data)
-            const data = await response.json()
+        const data = await response.json()
         setItems(data)
         setIsLoading(false)
         console.log(data);
@@ -30,7 +30,7 @@ const App = () => {
   return (
     <SafeAreaView>
       <StatusBar style="auto" />
-      <Photo text="hello" items={items} />
+      <Name text="hello" items={items} />
     </SafeAreaView>
   );
 }
