@@ -1,8 +1,9 @@
 import React from 'react'
 import {View, Text, Image, ImageBackground, StyleSheet} from 'react-native'
 
+import {useDetails} from '../utils/DetailsContext'
 
-const Details = () => {
+const DetailsScreen = (props) => {
     return (
         <View>
             <Text>Hello!</Text>
@@ -10,4 +11,4 @@ const Details = () => {
     )
 }
 
-export default Details
+export default DetailsScreen
