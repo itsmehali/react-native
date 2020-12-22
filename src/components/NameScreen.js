@@ -31,46 +31,23 @@ const NameScreen = ({title,navigation}) => {
         
         <View style={{ flex: 1, alignItems: 'center' }}>
                     
-                    <TouchableOpacity onPress={() => fc()}>
+                    <TouchableOpacity onPress={() => navigation.navigate('DetailsScreen')}>
+                    <View style={{ flex: 1, alignItems: 'center' }}>
                     <Image
                       source={{ uri: images[index].img }}
                        style={{ width: 550, height: 550, marginBottom: 10 }}
                         resizeMode="contain"
                     />
+                    </View>
                    
                     </TouchableOpacity>
+                    
                     <Text style={{ fontSize: 30, marginBottom: 10, color: 'white'}}>{images[index].name }</Text>
                     <View style={{flexDirection: 'row'}}>
                     <Button title="Prev" onPress={prev} />
                     <Button title="Next" onPress={next} />
                     </View>
         </View>
-       
-        // <ImageBackground source={require('../img/background.jpg')} style={styles.bg} >
-        //     <View style={{flex: 1, alignItems: 'center'}}>
-          
-
-        //             {/* <TouchableOpacity onPress={() => navigation.navigate('Details')}> */}
-        //             <Image style={{ width: 350, height : 450, marginBottom: 20 }} source={{ uri: images.img }}/>
-        //             {/* </TouchableOpacity> */}
-
-
-        //             <Text style={{fontSize:20, color: 'white', textAlign:'center', marginBottom: 20}}>{images.name}</Text>
-        //             <View>
-        //             <Button style={{marginBottom: 20}}>Favourite</Button>
-        //             </View>
-        //             {
-        //                 clicked &&
-        //                 <i className="ri-heart-line favorite"></i>
-                
-        //             }
-        //             {
-        //                 clicked &&
-        //                 <i className="ri-heart-line favorite"></i>
-        //             }
-        // </View>
-        // </ImageBackground>
-
 
     )
 }

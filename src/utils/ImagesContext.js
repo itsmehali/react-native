@@ -7,7 +7,11 @@ export const ImagesProvider = (props) => {
   const [index, setIndex] = useState(0)
   const [query, setQuery] = useState('')
   
-  
+
+
+
+  useEffect(() => {
+      
   const load = async () => {
     const response = await fetch(
       'https://www.breakingbadapi.com/api/characters'
@@ -19,9 +23,6 @@ export const ImagesProvider = (props) => {
     console.log(data, 'Itt az adat');
     console.log(data[0].img, 'elso kep');
   }
-
-
-  useEffect(() => {
     load()
   }, [])
 
