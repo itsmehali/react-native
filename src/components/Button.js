@@ -17,8 +17,9 @@ const Button = ({ title, ...rest }) => {
       style={{
         borderWidth: 1,
         padding: 5,
-        borderColor: 'red',
+        borderColor: 'black',
         borderRadius: 10,
+        justifyContent: 'center',
       }}
     >
       <Text>{title}</Text>

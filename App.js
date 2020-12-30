@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Button from './src/components/Button'
 import { ImagesProvider } from './src/utils/ImagesContext'
+import { FavouritesProvider } from './src/utils/FavouritesContext'
 
 import Navigation from './src/config/navigation'
 
@@ -30,15 +31,18 @@ const App = () => {
     <SafeAreaView>
       <StatusBar style="auto" />
       <ImagesProvider>
+        <FavouritesProvider>
+        <View style={{ flex: 1, alignItems: 'center', paddingBottom: 600 }}>
+        <NameScreen/>
+        </View>
         
         <Modal visible={modalOpen} animationType='slide'>
           <View  style={{ flex: 1, justifyContent: 'center' }}>
-            <Text style={{ fontSize: 20, marginBottom: 0, color: 'black'}}>More details about:</Text>
+            <Text style={{ fontSize: 20, marginBottom: 0, color: 'black', textDecorationLine: 'underline'}}>More details about:</Text>
             <DetailsScreen/>
             <Button 
-             title="Close"
-            color="#f194ff"
-          onPress={() => setModalOpen(false)}
+            title="Close"
+            onPress={() => setModalOpen(false)}
           />
           </View>
         </Modal>
@@ -47,15 +51,14 @@ const App = () => {
          color="#f194ff"
          onPress={() => setModalOpen(true)}
       />
-      <View style={{ flex: 1, alignItems: 'center' }}>
-        <NameScreen/>
-        </View>
+      
       {/* <NavigationContainer>
       <NameStack.Navigator>
         <NameStack.Screen name="NamesList" component={NameScreen} />
         <NameStack.Screen name="DetailsList" component={DetailsScreen} />
     </NameStack.Navigator>
       </NavigationContainer> */}
+      </FavouritesProvider>
       </ImagesProvider>
       <ImageBackground source={require('./src/img/background.jpg')} style={styles.bg} />
     </SafeAreaView>
@@ -70,7 +73,11 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
-  }
+  },
+  button: {
+    width: 300,
+    alignSelf: 'center'
+},
 });
 
 

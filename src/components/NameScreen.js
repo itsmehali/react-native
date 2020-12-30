@@ -4,18 +4,27 @@ import { FlatGrid } from 'react-native-super-grid';
 import DetailsScreen from './DetailsScreen'
 import { useImages } from '../hooks/useImages'
 import Button from './Button'
+import {useFavourites} from '../hooks/useFavourites'
 
 
 const NameScreen = ({title,navigation}) => {
-    const [favourite, setFavourite] = useState(false)
+    const { favourites, add, remove } = useFavourites()
     const [clicked, setClicked] = useState(false)
-    const { images, next, prev, index, asd } = useImages()
+    const { images, next, prev, index } = useImages()
 
 
 
     const fc = () => {
         console.log('clicked');
         setClicked(true)
+    }
+
+    const favourite = (id) => {
+      add(id)
+    }
+  
+    const unfavourite = (id) => {
+      remove(id)
     }
 
     if (images.length <= 0) {
@@ -42,9 +51,20 @@ const NameScreen = ({title,navigation}) => {
                    
                     </TouchableOpacity>
                     
-                    <Text style={{ fontSize: 30, marginBottom: 10, color: 'white'}}>{images[index].name }</Text>
+                    <Text style={{ fontSize: 30, marginBottom: 10, color: 'white', paddingBottom: 500, paddingTop:15}}>{images[index].name }</Text>
                     <View style={{flexDirection: 'row'}}>
                     <Button title="Prev" onPress={prev} />
+                    {favourites.includes(images[index].char_id) ? (
+                    <Button
+                      title="Unfavourite"
+                      onPress={() => unfavourite(images[index].char_id)}
+                     />
+                    ) : (
+                    <Button
+                    title="Favourite"
+                     onPress={() => favourite(images[index].char_id)}
+                    />
+        )}
                     <Button title="Next" onPress={next} />
                     </View>
         </View>

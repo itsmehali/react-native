@@ -7,13 +7,13 @@ const DetailsScreen = () => {
     const { images, next, prev, index, asd } = useImages()
 
     return (
-        <View>
-            <Text style={{ fontSize: 25, marginBottom: 0, color: 'black'}}>{images[index].name}</Text>
-            <Text style={{ fontSize: 20, marginBottom: 5, color: 'black'}}>Nickname: {images[index].nickname}</Text>
-            <Text style={{ fontSize: 20, marginBottom: 0, color: 'black'}}>Birthday: {images[index].birthday}</Text>
-            <Text style={{ fontSize: 20, marginBottom: 0, color: 'black'}}>Occupation: {images[index].occupation}</Text>
-            <Text style={{ fontSize: 20, marginBottom: 0, color: 'black'}}>Status: {images[index].status}</Text>
-            <Text style={{ fontSize: 20, marginBottom: 0, color: 'black'}}>Portrayed: {images[index].portrayed}</Text>
+        <View style={{ paddingBottom: 20}}>
+            <Text style={{ fontSize: 25, marginBottom: 0, color: 'black', fontWeight: 'bold', textAlign:"center"}}>{images[index].name}</Text>
+            <Text style={{ fontSize: 20, marginBottom: 5, color: 'black',textAlign:"center"}}>Nickname: {images[index].nickname}</Text>
+            <Text style={{ fontSize: 20, marginBottom: 0, color: 'black',textAlign:"center"}}>Birthday: {images[index].birthday}</Text>
+            <Text style={{ fontSize: 20, marginBottom: 0, color: 'black',textAlign:"center"}}>Occupation: {images[index].occupation}</Text>
+            <Text style={{ fontSize: 20, marginBottom: 0, color: 'black',textAlign:"center"}}>Status: {images[index].status}</Text>
+            <Text style={{ fontSize: 20, marginBottom: 0, color: 'black',textAlign:"center"}}>Portrayed: {images[index].portrayed}</Text>
         </View>
     )
 }
